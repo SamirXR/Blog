@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samir | Blogs</title>
+    <style>
+        .halftone {
+            filter: contrast(2000%);
+            overflow: hidden;
+        }
+
+        .annoying-extra-wrapper-to-make-it-work-in-safari {
+            mix-blend-mode: multiply;
+            align-self: flex-end;
+        }
+
+        .halftone::before {
+            content: "";
+            position: absolute;
+            inset: -50%;
+            background: radial-gradient(circle at center, #333, #fff);
+            background-size: 0.25em 0.25em;
+            transform: rotate(20deg);
+        }
+
+        .halftone img {
+            mix-blend-mode: hard-light;
+            display: block;
+            max-width: 100%;
+            height: auto;
+            filter: grayscale(1) brightness(80%) contrast(150%) blur(2px);
+            cursor: pointer;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: grid;
+            place-items: center;
+        }
+
+        .background {
+            --heading-1: "Another Difficult Morning";
+            --heading-2: "Uncertain Times Continue";
+            --heading-3: "The Future Remains Complicated";
+            --heading-4: "Small Problems, Larger Questions";
+            --heading-5: "Everything Is Mostly Fine";
+            --heading-6: "Minor Concerns Reported";
+            --heading-7: "A Few Things Remain Unclear";
+            --heading-8: "Normal Conditions Expected Eventually";
+            --heading-9: "Progress Continues Despite Everything";
+            --heading-10: "No Immediate Cause For Panic";
+            --body-1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus malesuada sapien vitae interdum luctus, arcu lectus consequat mauris, vitae malesuada erat lorem non purus. Integer commodo magna at consequat posuere, nisl purus viverra augue, sed posuere massa lorem vitae arcu. Donec feugiat neque vel sem tincidunt vitae placerat lectus fermentum. Suspendisse potenti. Mauris finibus ligula nec consequat blandit, eros urna luctus odio, vitae tempor lectus magna sed augue.";
+            --body-2: "Praesent vitae justo eget sapien fermentum vulputate. Nulla facilisi. Aliquam erat volutpat. Donec viverra lacus vitae convallis consequat, enim urna facilisis ipsum, at dignissim libero augue non nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur nec tortor sit amet lectus volutpat posuere. Nam suscipit risus at magna aliquet, vel rhoncus lorem consequat.";
+            --body-3: "Curabitur blandit tempus porttitor. Maecenas faucibus mollis interdum. Nulla vitae elit libero, a pharetra augue. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper.";
+            --body-4: "Nam commodo, risus vel luctus bibendum, justo urna malesuada odio, vitae ullamcorper purus lorem non nisl. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae. Sed fermentum lacus at erat tincidunt, non gravida magna posuere. Integer finibus augue vel orci efficitur, vitae tincidunt erat viverra.";
+            --body-5: "Aliquam erat volutpat. Donec elementum, lacus id suscipit pulvinar, turpis lacus malesuada justo, non cursus arcu lectus vitae risus. Quisque vitae augue vel turpis dignissim egestas. Morbi tristique, sapien sit amet facilisis aliquam, neque erat faucibus purus, vel sodales velit lectus nec mauris.";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            height: 100%;
+            max-width: 100%;
+            padding: 1.5rem;
+            box-sizing: border-box;
+            column-width: 160px;
+            column-gap: 3rem;
+            column-rule: 1px solid rgba(0, 0, 0, 0.35);
+            column-fill: auto;
+            overflow: hidden;
+            opacity: 0.25;
+            font-family: "Times New Roman", serif;
+            font-size: 8px;
+            line-height: 1.35;
+            text-align: justify;
+            pointer-events: none;
+        }
+
+        .background>div {
+            margin-bottom: 1.25rem;
+        }
+
+        /* Heading content cycle: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10 → repeat */
+        .background>div:nth-child(10n + 1)::before {
+            content: var(--heading-1);
+        }
+
+        .background>div:nth-child(10n + 2)::before {
+            content: var(--heading-2);
+        }
+
+        .background>div:nth-child(10n + 3)::before {
+            content: var(--heading-3);
+        }
+
+        .background>div:nth-child(10n + 4)::before {
+            content: var(--heading-4);
+        }
+
+        .background>div:nth-child(10n + 5)::before {
+            content: var(--heading-5);
+        }
+
+        .background>div:nth-child(10n + 6)::before {
+            content: var(--heading-6);
+        }
+
+        .background>div:nth-child(10n + 7)::before {
+            content: var(--heading-7);
+        }
+
+        .background>div:nth-child(10n + 8)::before {
+            content: var(--heading-8);
+        }
+
+        .background>div:nth-child(10n + 9)::before {
+            content: var(--heading-9);
+        }
+
+        .background>div:nth-child(10n)::before {
+            content: var(--heading-10);
+        }
+
+        .background>div::before {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-size: 9px;
+            font-weight: bold;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-align: left;
+        }
+
+        .background>div::after {
+            content: var(--body-1);
+        }
+
+        .background>div:nth-child(4n + 2)::after {
+            content: var(--body-2);
+        }
+
+        .background>div:nth-child(6n + 3)::after {
+            content: var(--body-3);
+        }
+
+        /* Continuation paragraphs */
+        .background>div:nth-child(5)::before,
+        .background>div:nth-child(9)::before,
+        .background>div:nth-child(16)::before,
+        .background>div:nth-child(22)::before {
+            content: "";
+        }
+
+        .background>div:nth-child(5)::after {
+            content: var(--body-4);
+        }
+
+        .background>div:nth-child(9)::after {
+            content: var(--body-5);
+        }
+
+        .background>div:nth-child(16)::after {
+            content: var(--body-2) " " var(--body-4);
+        }
+
+        .background>div:nth-child(22)::after {
+            content: var(--body-3) " " var(--body-5);
+        }
+
+        /* Heading style variations */
+        .background>div:nth-child(3n + 1)::before {
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .background>div:nth-child(7n + 3)::before {
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 0.03em;
+            text-transform: none;
+            line-height: 1.1;
+        }
+
+        .background>div:nth-child(11n + 5)::before {
+            font-size: 7px;
+            font-weight: 900;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+        }
+
+        .background>div:nth-child(13n + 4)::before {
+            font-size: 10px;
+            font-style: italic;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .background>div:nth-child(17n + 7)::before {
+            font-size: 15px;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            line-height: 1;
+        }
+
+        .background>div:nth-child(19n + 2)::before {
+            font-size: 9px;
+            font-weight: bold;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+        }
+
+        /* Body style variations */
+        .background>div:nth-child(8n + 4)::after {
+            font-size: 7px;
+            line-height: 1.45;
+        }
+
+        .background>div:nth-child(10n + 6)::after {
+            font-size: 9px;
+            line-height: 1.25;
+        }
+
+        .background>div:nth-child(15n + 8)::after {
+            text-align: left;
+        }
+
+        /* Feature articles */
+        .background>div:nth-child(14)::after,
+        .background>div:nth-child(25)::after {
+            content: var(--body-3) " " var(--body-5) " " var(--body-1);
+        }
+
+        /* Spacing variations */
+        .background>div:nth-child(9n + 1) {
+            margin-bottom: 2rem;
+        }
+
+        .background>div:nth-child(12n + 4) {
+            margin-bottom: 0.75rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="dithering.html" title="Explore Dithering Tool"
+        style="text-decoration: none; color: inherit; display: block;">
+        <div class="annoying-extra-wrapper-to-make-it-work-in-safari">
+            <div class="halftone">
+                <img src="Untitled.avif" alt="Halftone effect demo" draggable="false" oncontextmenu="return false;">
+            </div>
+        </div>
+    </a>
+
+    <div class="background">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+</body>
+
+</html>
